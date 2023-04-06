@@ -25,8 +25,20 @@ export default {
                         },
                         {
                             type: 'page',
+                        },
+                        
+                    ],
+                    options: {
+                        filter: ({ document }) => {
+                            const lang = document?.__i18n_lang || 'da'
+                            return { 
+                                filter: '(__i18n_lang == $lang)',
+                                params: {
+                                    lang
+                                }
+                            }
                         }
-                    ]
+                    }
                 }
             ]
         }

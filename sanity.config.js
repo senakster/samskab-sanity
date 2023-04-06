@@ -9,7 +9,7 @@ import { deskStructure } from './deskStructure'
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
 // Define the singleton document types
-const singletonTypes = new Set([])
+const singletonTypes = new Set(['frontpage', 'footer', 'settings'])
 
 export default defineConfig({
     name: 'default',

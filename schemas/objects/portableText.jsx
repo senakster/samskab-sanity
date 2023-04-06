@@ -9,7 +9,7 @@ export default {
     title: 'Tekstblok',
     name: 'portableText',
     type: 'array',
-    // icon: (doc) => {console.log(doc); return HiLink },
+    icon: (doc) => {console.log(doc); return HiLink },
     of: [
         {
             title: 'Block',

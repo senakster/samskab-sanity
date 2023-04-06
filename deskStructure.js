@@ -9,7 +9,18 @@ import Iframe from 'sanity-plugin-iframe-pane'
 //     types = typeof types === 'string' ? [types] : types;
 //     types.includes()
 // }
-const baseLanguage = 'da'
+const settings = listItem => {
+    return [
+        'settings'
+    ]
+        .includes(listItem.getId())
+}
+const footer = listItem => {
+    return [
+        'footer'
+    ]
+        .includes(listItem.getId())
+}
 const pages = listItem => {
     return [
         'page'
@@ -26,38 +37,63 @@ export const deskStructure = (S, context) =>
     S.list()
         .title('Indhold')
         .items([
+            // ...S.documentTypeListItems(),
+            S.listItem()
+                .title(`Forside`)
+                .icon(AiOutlineHome)
+                .id('frontpage')
+                .child(
+                    S.document()
+                        .id('frontpage')
+                        .schemaType("frontpage")
+                        .documentId("frontpage")
+                        .views([
+                            S.view.form(),
+                            S.view.component(Iframe)
+                                .title('Preview')
+                                .options({
+                                    url: (doc) => getPreviewUrl(doc),
+                                }),
+                            S.view.component(ReferencedBy)
+                                .title('Referenter')
+                        ])
+                ),
+            S.listItem()
+                .title('Indholdssider')
+                .child(
+                    S.documentList()
+                        .title(`Indholdssider`)
+                        .schemaType('page')
+                        .filter('_type == "page" && __i18n_lang == "da"')
+                        .defaultOrdering([{ field: 'slug.current' }])
+                ),
+            ...S.documentTypeListItems()
+            .filter(footer),
+            ...S.documentTypeListItems()
+            .filter(settings),
+
             // S.listItem()
-            //     .title(`Forside`)
-            //     .icon(AiOutlineHome)
-            //     .id('frontpage')
+            //     .title(`Footer`)
+            //     .id('footer')
             //     .child(
             //         S.document()
-            //             .id('frontpage')
-            //             .schemaType("frontpage")
-            //             .documentId("frontpage")
+            //             .id('footer')
+            //             .schemaType("footer")
+            //             .documentId("footer")
             //             .views([
             //                 S.view.form(),
-            //                 S.view.component(Iframe)
-            //                     .title('Preview')
-            //                     .options({
-            //                         url: (doc) => getPreviewUrl(doc),
-            //                     }),
-            //                 S.view.component(ReferencedBy)
-            //                     .title('Referenter')
             //             ])
             //     ),
-            ...S.documentTypeListItems()
-            // .filter(pages),
-            // ...S.documentTypeListItems()
-            // .filter(notPages),
             // S.listItem()
-            //     .title('Pages')
+            //     .title(`Indstillinger`)
+            //     .id('settings')
             //     .child(
-            //         S.documentList()
-            //             .title(`da pages`)
-            //             .schemaType('page')
-            //             .filter('_type == "page" && __i18n_lang == "da"')
-            //             .defaultOrdering([{ field: 'slug.current' }])
+            //         S.document()
+            //             .id('settings')
+            //             .schemaType("settings")
+            //             .documentId("settings")
+            //             .views([
+            //                 S.view.form(),
+            //             ])
             //     ),
-
         ])

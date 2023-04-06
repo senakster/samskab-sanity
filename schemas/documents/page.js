@@ -39,5 +39,10 @@ export default {
             },
             validation: (Rule) => Rule.required(),
         }, 
+        {
+            name: 'content',
+            title: 'Indholdsblokke',
+            type: 'contentBlocks'
+        }
     ]
 }
