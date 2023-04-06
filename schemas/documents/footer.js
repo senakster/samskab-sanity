@@ -1,6 +1,6 @@
 export default {
-    name: 'frontpage',
-    title: 'Forside',
+    name: 'footer',
+    title: 'Footer',
     type: 'document',
     i18n: true,
     initialValue: {
@@ -13,9 +13,9 @@ export default {
             type: 'string',
         },
         {
-            name: 'hero',
-            title: 'Hero',
-            type: 'hero',
+            name: 'content',
+            title: 'Indholdsblokke',
+            type: 'contentBlocks'
         }
     ]
 }
