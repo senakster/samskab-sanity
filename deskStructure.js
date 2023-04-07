@@ -33,6 +33,26 @@ const notPages = listItem => {
     ]
     .includes(listItem.getId())
 }
+
+const publication = listItem => {
+    return [
+        'publication'
+    ]
+        .includes(listItem.getId())
+}
+
+const person = listItem => {
+    return [
+        'person'
+    ]
+        .includes(listItem.getId())
+}
+const participant = listItem => {
+    return [
+        'participant'
+    ]
+        .includes(listItem.getId())
+}
 export const deskStructure = (S, context) =>
     S.list()
         .title('Indhold')
@@ -67,33 +87,42 @@ export const deskStructure = (S, context) =>
                         .filter('_type == "page" && __i18n_lang == "da"')
                         .defaultOrdering([{ field: 'slug.current' }])
                 ),
+            S.listItem()
+                .title('Samarbejdspartnere')
+                .child(
+                    S.documentList()
+                        .title(`Samarbejdspartnere`)
+                        .schemaType('participant')
+                        .filter('_type == "participant" && __i18n_lang == "da"')
+                        .defaultOrdering([{ field: 'title' }])
+                ),
+            S.listItem()
+                .title('Personer')
+                .child(
+                    S.documentList()
+                        .title(`Personer`)
+                        .schemaType('person')
+                        .filter('_type == "person" && __i18n_lang == "da"')
+                        .defaultOrdering([{ field: 'title' }])
+                ),
+            S.listItem()
+                .title('Publikationer')
+                .child(
+                    S.documentList()
+                        .title(`Publikationer`)
+                        .schemaType('publication')
+                        .filter('_type == "publication" && __i18n_lang == "da"')
+                        // .defaultOrdering([{ field: 'slug.current' }])
+                ),
+            // ...S.documentTypeListItems()
+            //     .filter(participant),
+            // ...S.documentTypeListItems()
+            //     .filter(person),
+            // ...S.documentTypeListItems()
+            //     .filter(publication),
             ...S.documentTypeListItems()
             .filter(footer),
             ...S.documentTypeListItems()
             .filter(settings),
 
-            // S.listItem()
-            //     .title(`Footer`)
-            //     .id('footer')
-            //     .child(
-            //         S.document()
-            //             .id('footer')
-            //             .schemaType("footer")
-            //             .documentId("footer")
-            //             .views([
-            //                 S.view.form(),
-            //             ])
-            //     ),
-            // S.listItem()
-            //     .title(`Indstillinger`)
-            //     .id('settings')
-            //     .child(
-            //         S.document()
-            //             .id('settings')
-            //             .schemaType("settings")
-            //             .documentId("settings")
-            //             .views([
-            //                 S.view.form(),
-            //             ])
-            //     ),
         ])

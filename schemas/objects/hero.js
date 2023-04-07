@@ -18,7 +18,10 @@ export default {
                     title: 'Alt-text',
                     type: 'text'
                 }
-            ]
+            ],
+            options: {
+                hotspot: true
+            }
         }
     ]
 }
