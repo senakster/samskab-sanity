@@ -16,6 +16,11 @@ export default {
             name: 'hero',
             title: 'Hero',
             type: 'hero',
+        },
+        {
+            name: 'content',
+            title: 'Indholdsblokke',
+            type: 'contentBlocks'
         }
     ]
 }

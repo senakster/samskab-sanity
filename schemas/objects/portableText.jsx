@@ -41,6 +41,7 @@ export default {
                 ],
                 // Annotations can be any object structure – e.g. a link or a footnote.
                 annotations: [
+                    { name: 'color', title: 'Color', type: 'color' },
                     {
                         title: 'Link',
                         name: 'externalLink',

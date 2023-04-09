@@ -13,6 +13,11 @@ export default {
             type: 'string',
         },
         {
+            name:'logo',
+            title: 'Logo',
+            type: 'image',
+        },
+        {
             name: 'menu',
             title: 'Menu',
             type: 'array',

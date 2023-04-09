@@ -5,8 +5,38 @@ export default {
     fields: [
         {
             name: 'title',
-            title: 'Overskrift',
+            title: 'Redaktionel overskrift (vises ikke)',
             type: 'string',
+            hidden: true,
+        },
+        {
+            name: 'objectPosition',
+            title: 'Position',
+            type: 'string',
+            options: {
+                list: ['contain','cover'],
+                layout: 'radio',
+                direction: 'horizontal',
+
+            },
+            initialValue: 'contain'
+        },
+        {
+            name: 'lightMode',
+            title: 'Baggrundsfarve',
+            type: 'string',
+            options: {
+                list: ['light', 'dark', 'none'],
+                layout: 'radio',
+                direction: 'horizontal',
+
+            },
+            initialValue: 'none'
+        },
+        {
+            name: 'heroText',
+            title: 'Hero-tekst',
+            type: 'portableText'
         },
         {
             name: 'image',
