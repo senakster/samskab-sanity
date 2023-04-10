@@ -13,6 +13,12 @@ export default {
             type: 'string',
         },
         {
+            name: 'logo',
+            title: 'Footer logo',
+            type: 'image',
+            description: 'brug hvidt logo'
+        },
+        {
             name: 'content',
             title: 'Indholdsblokke',
             type: 'contentBlocks'
