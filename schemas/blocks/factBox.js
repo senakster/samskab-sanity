@@ -1,8 +1,8 @@
 export default {
-    name: 'textBlock',
-    title: 'Tekstblok',
+    name: 'factBox',
+    title: 'Faktaboks',
     type: 'object',
-    fields: [
+    fields:[
         {
             name: 'title',
             title: 'Redaktionel titel',
@@ -10,9 +10,9 @@ export default {
             description: 'Vises ikke',
         },
         {
-            name: 'value',
-            title: 'Tekstblok',
+            name: 'content',
+            title: 'Tekstindhold',
             type: 'portableText',
         }
-    ]
+    ],
 }

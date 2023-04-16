@@ -16,7 +16,7 @@ export default {
             name: 'logo',
             title: 'Footer logo',
             type: 'image',
-            description: 'brug hvidt logo'
+            description: 'Brug hvidt logo'
         },
         {
             name: 'content',
